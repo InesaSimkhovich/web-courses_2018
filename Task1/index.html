@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Перевод денег с карты на карту</title>
+    <link href='css/bootstrap.min.css' rel='stylesheet'>
+    <link href='css/style.css' rel='stylesheet'>
+</head>
+<body>
+    <form class='container' >
+        <div class='row'>
+            <div class='col-md-6 col-sm-6'>
+                <h4>Данные отправителя</h4>
+                <div class='card'>
+                    <i class='icon-brand' id='sender-brand'></i>
+                    <div class='card-number'>
+                        <label for='sender-card-number'>Номер карты</label>
+                        <input type='text' id='sender-card-number' required onkeyup='brand("sender");'>
+                    </div>
+
+                    <div class='validity-period'>
+                        <label>Срок действия</label>
+                        <input type='text' placeholder='ММ' required id='month'> /
+                        <input type='text' placeholder='ГГ' required id='year'>
+                    </div>
+
+                    <div class='security-code'>
+                        <label for='security-number'>CVV/CVC</label>
+                        <i class='glyphicon glyphicon-question-sign' data-toggle='tooltip' data-placement='right'
+                           title='CVV (CVV2)/CVC (CVC2) код – это специальный код безопасности банковской карты, который включен в учетную запись и отображается на оборотной стороне фактической карты.'></i>
+                        <input type='text' id='security-number' required>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-6 col-sm-6'>
+                <h4>Данные получателя</h4>
+                <div class='card'>
+                    <i class='icon-brand' id='receiver-brand'></i>
+                    <div class='card-number'>
+                        <label for='receiver-card-number'>Номер карты</label>
+                        <input type='text' id='receiver-card-number' required onkeyup='brand("receiver");'>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-6 col-sm-6'>
+                <div class='checkbox email-money-group'>
+                    <label>
+                        <input type='checkbox'>Отправить чек на e-mail
+                    </label>
+                    <input type='email' class='form-control' placeholder='Ваш e-mail' autocomplete='email' required>
+                </div>
+
+                <div class='email-money-group'>
+                    <label for='summ'>Сумма перевода</label>
+                    <div class='input-group'>
+                        <input type='text' id='summ' class='form-control num' placeholder='От 500 до 500000' minlength='3' maxlength='6' required>
+                        <span class='input-group-addon'>BYN</span>
+                    </div>
+                </div>
+
+                <div class='email-money-group'>
+                    <label  for='total'>Итоговая сумма</label>
+                    <div class='input-group'>
+                        <input type='text' id='total' class='form-control num' placeholder='От 680 до 530150' minlength='3' maxlength='6' required>
+                        <span class='input-group-addon'>BYN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-6 col-sm-6'>
+                <div class='checkbox'>
+                    <label>
+                        <input type='checkbox' id='msg-checkbox'>Добавить сообщение получателю
+                    </label>
+                    <i  class='glyphicon glyphicon-question-sign' data-toggle='tooltip' data-placement='right'
+                        title='Сообщение отправится получателю на номер телефона, к которому привязана его карта.'></i>
+                    <textarea class='form-control' rows='5' name='message-textarea' id='msg-textarea' placeholder='Введите сообщение получателю...'></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='col-md-6 col-sm-6'>
+                <button type='submit' class='btn btn-default btn-block'>Перевести</button>
+            </div>
+        </div>
+    </form>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+    <script src='js/bootstrap.min.js'></script>
+    <script src='js/jquery.inputmask.bundle.js'></script>
+    <script src='js/script.js'></script>
+    <script src='js/config.js'></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+</html>
